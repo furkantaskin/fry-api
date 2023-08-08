@@ -92,9 +92,9 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = ["*"],
-    allow_methods = ["*"],
-    allow_headers = ["*"],
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -150,12 +150,13 @@ async def fetch_user(user_id: int):
 
 @app.post("/sign-in")
 async def sign_in(user: Dict[str, Any]):
-    get_user = next((x for x in users["users"] if x["email"] == user["email"]), None)
+    get_user = next(
+        (x for x in users["users"] if x["email"] == user["email"]), None)
     print(get_user)
     if get_user == None or get_user["password"] != user["password"]:
         raise HTTPException(
             status_code=404, detail="Kullanıcı bulunamadı")
-    
+
     get_hash_dict: Dict[str, str] = {
         "name": get_user["name"],
         "email": get_user["email"],
