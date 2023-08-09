@@ -53,36 +53,42 @@ products: ProductList = {
             "name": "Fön Makinesi",
             "description": "Siyah fön makinesi",
             "price": 3.14,
+            "quantity": 5
         },
         {
             "id": 2,
             "name": "Vantilatör",
             "description": "Soğutuculu vantilatör",
             "price": 99,
+            "quantity": 30
         },
         {
             "id": 3,
             "name": "İpek Gömlek",
             "description": "İpek gömlek",
             "price": 440.25,
+            "quantity": 8979
         },
         {
             "id": 4,
             "name": "Bisiklet",
             "description": "Dağ tipi bisiklet",
             "price": 9_999.99,
+            "quantity": 120
         },
         {
             "id": 5,
             "name": "Bilgisayar",
             "description": "Dizüstü bilgisayar",
             "price": 45_234.67,
+            "quantity": 3
         },
         {
             "id": 6,
             "name": "Fincan",
             "description": "Özel baskılı porselen kahve fincanı",
             "price": 45.99,
+            "quantity": 2571
         },
     ]
 }
@@ -101,7 +107,6 @@ app.add_middleware(
 def check_item_exist(item, user_or_prod):
     if (user_or_prod == "user"):
         return next((x for x in users["users"] if x["id"] == item), None)
-
     else:
         return next((x for x in products["prods"] if x["id"] == item), None)
 
